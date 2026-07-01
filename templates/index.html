@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <img src="{{ url_for('static', filename='images/house_banner.jpg') }}"
+         alt="House Banner"
+         class="banner">
+
+    <h1>🏠 House Price Prediction</h1>
+
+    <p class="subtitle">
+        Predict residential house prices using a Machine Learning model trained on the Ames Housing Dataset.
+    </p>
+    <div class="stats">
+
+    <div class="card">
+        <h3>87.85%</h3>
+        <p>Model Accuracy (R²)</p>
+    </div>
+
+    <div class="card">
+        <h3>Random Forest</h3>
+        <p>Algorithm</p>
+    </div>
+
+    <div class="card">
+        <h3>10</h3>
+        <p>Features Used</p>
+    </div>
+
+</div>
+    <form action="/predict" method="POST">
+
+        <label>Total Living Area (sq ft)</label>
+        <input type="number" name="TotalLivingArea" required>
+
+        <label>Overall Quality (1-10)</label>
+        <input type="number" name="OverallQual" required>
+
+        <label>Basement Quality</label>
+        <input type="number" name="BsmtQual" required>
+
+        <label>Ground Living Area</label>
+        <input type="number" name="GrLivArea" required>
+
+        <label>Basement Finished SF</label>
+        <input type="number" name="BsmtFinSF1" required>
+
+        <label>Year Remodeled</label>
+        <input type="number" name="YearRemodAdd" required>
+
+        <label>Year Built</label>
+        <input type="number" name="YearBuilt" required>
+
+        <label>House Age</label>
+        <input type="number" name="HouseAge" required>
+
+        <label>Garage Area</label>
+        <input type="number" name="GarageArea" required>
+
+        <label>Lot Area</label>
+        <input type="number" name="LotArea" required>
+
+        <button type="submit">
+            🔍 Predict Price
+        </button>
+
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        💰 Estimated House Price<br><br>
+        $ {{ prediction }}
+    </div>
+    {% endif %}
+
+    <hr>
+
+<p class="footer">
+
+<strong>Developed by Aryan Poonia</strong>
+
+<br>
+
+B.Tech CSE (Artificial Intelligence & Machine Learning)
+
+<br>
+
+Guru Jambheshwar University of Science & Technology
+
+</p>
+</div>
+
+</body>
+</html>
