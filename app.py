@@ -41,10 +41,10 @@ def predict():
 
     prediction = model.predict(features)[0]
 
-    return render_template(
-        "index.html",
-        prediction_text=f"Predicted House Price: ${prediction:,.2f}"
-    )
+return render_template(
+    "index.html",
+    prediction=f"{prediction:,.2f}"
+)
 
 if __name__ == "__main__":
     app.run(debug=True)
